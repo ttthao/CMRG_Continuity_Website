@@ -1,0 +1,53 @@
+{% load i18n menu_tags cache %}
+
+<!-- tutorial categories exist -->
+{% if children %}
+
+	<!-- loop through each category -->
+	{% for child in children %}
+		
+		{% if forloop.counter0|divisibleby:3 %}
+			<!-- start a new row before every third category -->
+			<div class="row top-margin bottom-margin">
+		{% endif %}
+
+		<!-- individual categories -->
+	    <div class="col-lg-4 text-center">
+
+	    	<!-- display icon, if exists -->
+	    	{% if child.attr.icon %}
+	    		<img src="{{ child.attr.icon }}" alt="{{ child.get_menu_title }}" class="img-responsive">
+
+	    	{% else %}
+	    		<h1>Sorry, no image yet.</h1>
+
+	    	{% endif %}
+			
+			<!-- display menu title -->
+	        <h3>{{ child.get_menu_title }}</h3>
+
+	        <!-- display page description, if exists -->
+	        {% if child.attr.desc %}
+	        	<p>{{ child.attr.desc }}</p>
+
+	        {% else %}
+	        	<p>Sorry, no description yet.</p>
+
+	        {% endif %}
+
+	        <!-- button to go to specific category -->
+	        <a href="{{ child.get_absolute_url }}" class="btn btn-default">Get Started</a>
+	    </div>
+
+	    {% if forloop.counter0|add:"1"|divisibleby:3 or forloop.last %}
+	    	<!-- close the row if three columns are in it or if it is the last column -->
+	    	</div>
+	    {% endif %}
+
+	{% endfor %}
+
+<!-- no categories yet -->
+{% else %}
+	<div class="col-lg-4 col-lg-offset-4 text-center">Sorry, no categories yet.</div>
+	
+{% endif %}

@@ -1,0 +1,57 @@
+<!-- carousel wrapper -->
+<div id="featured-carousel" class="carousel slide" data-ride="carousel">
+
+	<ol class="carousel-indicators">
+
+		<!-- first slide remains static -->
+		<li data-target="#featured-carousel" data-slide-to="0" class="active"></li>
+		
+		<!-- all other slides depend on featured app -->
+		{% if featured %}
+			{% for featured in featured %}
+				<li data-target="#featured-carousel" data-slide-to="{{ forloop.counter }}"></li>
+			{% endfor %}
+		{% endif %}
+	</ol>
+	
+	<!-- carousel slides -->
+	<div class="carousel-inner" role="listbox">
+
+		<!-- first carousel slide: introduction -->
+		<div class="item active">
+			<div class="featured-header col-lg-offset-2 col-lg-8 text-center">
+				<div class="row">
+					<h1>Continuity 6</h1>
+					<p>
+						The problem-solving environment for multi-scale modeling
+						in bioengineering and physiology — especially cardiac biomechanics,
+						transport and electrophysiology.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- optional carousel slides dependent on featured app -->
+		{% if featured %}
+			{% for featured in featured %}
+			<div class="item">
+				<img class="center-block" src="{{ featured.image.url }}" alt="...">
+				<div class="carousel-caption">
+					<h1>{{ featured.header }}</h1>
+					{{ featured.snippet }}
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+	
+	<!-- carousel controls -->
+	<a class="left carousel-control" href="#featured-carousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#featured-carousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>

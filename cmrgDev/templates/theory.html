@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+	<div class="jumbotron">
+    	<div class="container">
+        	{% placeholder "feature" %}
+        </div>
+    </div>
+
+    <div class="container">
+		
+		<!-- introduction -->
+		<div class="row top-margin">
+			<div class="col-lg-8 col-lg-offset-2">
+				{% placeholder "Introductions" %}
+			</div>
+		</div>
+		<hr class="half-rule">
+
+    	<!-- table 1 -->
+    	<div class="row">
+    		<div class="col-lg-8 col-lg-offset-2">
+    			<div class="panel panel-default">
+
+    				<!-- title -->
+    				<div class="panel-heading">
+    					<h4>Introduction to Cardiac Modeling</h4>
+    				</div>
+
+    				<!-- List group -->
+					<div class="list-group">
+
+						<!-- parent row -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture-1-1">
+							<h4 class="list-group-item-heading">Lecture 1</h4>
+		    				<p class="list-group-item-text small text-muted">
+		    					Introduction to Cardiac Physiology and Modeling with Continuity 6.3
+		    				</p>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="lecture-1-1">
+							<a href="#" class="list-group-item">PDF</a>
+							<a href="#" class="list-group-item">PPT</a>
+						</div>
+
+						<!-- parent row -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture-1-2">
+							<h4 class="list-group-item-heading">Lecture 2</h4>
+		    				<p class="list-group-item-text small text-muted">
+		    					Modeling excitation, contraction and biochemical regulation
+		    				</p>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="lecture-1-2">
+							<a href="#" class="list-group-item">PDF</a>
+							<a href="#" class="list-group-item">PPT</a>
+						</div>
+
+						<!-- suggested reading -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#sr-1">
+							<h4 class="list-group-item-heading">Suggested Reading</h4>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="sr-1">
+							<a href="#" class="list-group-item">
+								McCulloch AD (2005) Cardiac Biomechanics. Chapter 54 in: The Biomedical Engineering Handbook, 3rd Edition, Volume I, Bronzino JD, Editor-in-Chief, CRC Press, Boca Raton, FL: pages 54-1 to 54-27.
+							</a>
+							<a href="#" class="list-group-item">
+								Saucerman JJ, McCulloch AD (2004) Mechanistic systems models of cell signaling networks: a case study of myocyte adrenergic regulation. Progress in Biophysics and Molecular Biology 2004;85(2/3):261-278.
+							</a>
+						</div>
+
+					</div>
+    			</div>
+    		</div>
+    	</div>
+
+    	<!-- table 2 -->
+    	<div class="row">
+    		<div class="col-lg-8 col-lg-offset-2">
+    			<div class="panel panel-default">
+
+    				<!-- title -->
+    				<div class="panel-heading">
+    					<h4>Meshes and Anatomic Fitting</h4>
+    				</div>
+
+    				<!-- List group -->
+					<div class="list-group">
+
+						<!-- parent row -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture-2-1">
+							<h4 class="list-group-item-heading">Lecture 1</h4>
+		    				<p class="list-group-item-text small text-muted">
+		    					Finite element discretization and mesh fitting
+		    				</p>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="lecture-2-1">
+							<a href="#" class="list-group-item">PDF</a>
+							<a href="#" class="list-group-item">PPT</a>
+						</div>
+
+						<!-- suggested reading -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#sr-2">
+							<h4 class="list-group-item-heading">Suggested Reading</h4>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="sr-2">
+							<a href="#" class="list-group-item">
+								Vetter FJ, McCulloch AD (1998). Three-dimensional analysis of regional cardiac anatomy. Progress in Biophysics and Molecular Biology 69:157-183.
+							</a>
+							<a href="#" class="list-group-item">
+								Mazhari R, Omens JH, Waldman LK, McCulloch AD (1998) Regional myocardial perfusion and mechanics: a model-based method of analysis. Annals of Biomedical Engineering 1998;26:743-755.
+							</a>
+							<a href="#" class="list-group-item">
+								Usyk TP, McCulloch AD (2003) Computational methods for soft tissue biomechanics. In Holzapfel GA, Ogden RW (Eds) Biomechanics of Soft Tissue in Cardiovascular Systems. Springer, Wien New York (CISM Courses and Lectures No. 441, International Center for Mechanical Sciences), pages 273-342.
+							</a>
+						</div>
+
+					</div>
+    			</div>
+    		</div>
+    	</div>
+
+    	<!-- table 2 -->
+    	<div class="row">
+    		<div class="col-lg-8 col-lg-offset-2">
+    			<div class="panel panel-default">
+
+    				<!-- title -->
+    				<div class="panel-heading">
+    					<h4>Electrophysiology Models</h4>
+    				</div>
+
+    				<!-- List group -->
+					<div class="list-group">
+
+						<!-- parent row -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture-3-1">
+							<h4 class="list-group-item-heading">Lecture 1</h4>
+		    				<p class="list-group-item-text small text-muted">
+		    					Monodomain modeling in cardiac electrophysiology
+		    				</p>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="lecture-3-1">
+							<a href="#" class="list-group-item">PDF</a>
+							<a href="#" class="list-group-item">PPT</a>
+						</div>
+
+						<!-- suggested reading -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#sr-3">
+							<h4 class="list-group-item-heading">Suggested Reading</h4>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="sr-3">
+							<a href="#" class="list-group-item">
+								Rudy R, Silva JR (2006) Computational biology in the study of cardiac ion channels and cell electrophysiology. Quarterly Reviews of Biophysics, pages 1-60.
+							</a>
+							<a href="#" class="list-group-item">
+								Rogers JM, McCulloch AD (1994) A collocation-Galerkin finite element model of cardiac action potential propagation. IEEE Transactions on Biomedical Engineering 41:743-757.
+							</a>
+							<a href="#" class="list-group-item">
+								Belik ME, Usyk TP, McCulloch AD (2004) Computational methods for cardiac electrophysiology. In Ayache N, (Guest Ed) Computational Models for the Human Body, Special Volume of (Ciarlet PG, Ed) Handbook of Numerical Analysis, Volume XII. Elsevier B.V., pages 129-188.
+							</a>
+						</div>
+
+					</div>
+    			</div>
+    		</div>
+    	</div>
+
+    	<!-- table 4 -->
+    	<div class="row">
+    		<div class="col-lg-8 col-lg-offset-2">
+    			<div class="panel panel-default">
+
+    				<!-- title -->
+    				<div class="panel-heading">
+    					<h4>Biomechanics and Electromechanics Models</h4>
+    				</div>
+
+    				<!-- List group -->
+					<div class="list-group">
+
+						<!-- parent row -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture-4-1">
+							<h4 class="list-group-item-heading">Lecture 1</h4>
+		    				<p class="list-group-item-text small text-muted">
+		    					 Biomechanics modeling
+		    				</p>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="lecture-4-1">
+							<a href="#" class="list-group-item">PDF</a>
+							<a href="#" class="list-group-item">PPT</a>
+						</div>
+
+						<!-- suggested reading -->
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#sr-4">
+							<h4 class="list-group-item-heading">Suggested Reading</h4>
+						</button>
+
+						<!-- nested list group for links -->
+						<div class="list-group nested-list-group collapse" id="sr-4">
+							<a href="#" class="list-group-item">
+								Costa KD, Hunter PJ, Rogers JM, Wayne JS, Guccione JM, Waldman LK, McCulloch AD (1996a,b) A three-dimensional finite element method for large elastic deformations of ventricular myocardium: Part I - Cylindrical and spherical polar coordinates and Part II - Prolate spheroidal coordinates. Journal of Biomechanical Engineering 118: 452-472.
+							</a>
+							<a href="#" class="list-group-item">
+								Vetter FJ, McCulloch AD (2000) Three-dimensional stress and strain in passive rabbit left ventricle: A model study. Annals of Biomedical Engineering 28:781-792.
+							</a>
+							<a href="#" class="list-group-item">
+								Kerckhoffs RCP, McCulloch AD (2006a) Cardiac Electromechanics, In: Chien et al (Eds) (in press)
+							</a>
+							<a href="#" class="list-group-item">
+								Kerckhoffs RCP, Healy SN, Usyk TP, McCulloch AD (2006b) Computational methods for cardiac electromechanics. Proceedings of the IEEE 94(4):769-783.
+							</a>
+						</div>
+
+					</div>
+    			</div>
+    		</div>
+    	</div>
+		<hr class="half-rule">
+
+    </div>
+{% endblock content %}

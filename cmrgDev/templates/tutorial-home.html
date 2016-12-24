@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+
+	<!-- title -->
+    <div class="jumbotron">
+    	<div class="container">
+        	{% placeholder "feature" %}
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="container">
+
+        <!-- header for tutorial -->
+        <div class="row top-margin">
+            <div class="col-lg-8 col-lg-offset-2">{% placeholder "blurb' %}</div>
+        </div>
+        
+        <hr class="half-rule">
+
+        <!-- tutorial catagories -->
+        {% show_sub_menu 1 None 0 "menu/category.html" %}
+
+        <hr class="half-rule">
+    </div>
+
+    
+{% endblock content %}

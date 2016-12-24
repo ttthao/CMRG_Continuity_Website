@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+  <header>
+    {% placeholder "feature plguin" %}
+  </header>
+  
+    <!--content -->
+    <div class="container-fluid extra-bottom-margin">
+
+      <!-- Introduction -->
+      <div class="row top-margin bottom-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-8 col-xs-12">
+          {% placeholder "introduction" %}
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-2 col-xs-3">
+          <img src="/media/gear.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+        <div class="col-lg-6 col-xs-9">
+          <h1>Nonlinear finite-element methods for large deformation biomechanics</h1>
+          {% placeholder "feature one" %}
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-6 col-xs-9">
+          <h1 class="text-right">Collocation methods for monodomain reacion-diffusion models of excitable media</h1>
+          {% placeholder "feature two" %}
+        </div>
+        <div class="col-lg-2 col-xs-3">
+          <img src="/media/wrench.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-2 col-xs-3">
+          <img src="/media/mesh.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+        <div class="col-lg-6 col-xs-9">
+          <h1>Least-square fitting of high-order meshes and fields</h1>
+          {% placeholder "feature three" %}
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-6 col-xs-9">
+          <h1 class="text-right">Python-based client-server interactions</h1>
+          {% placeholder "feature four" %}
+        </div>
+        <div class="col-lg-2 col-xs-3">
+          <img src="/media/python.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-2 col-xs-3">
+          <img src="/media/memory.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+        <div class="col-lg-6 col-xs-9">
+          <h1>Large-scale modeling on distributed memory platforms</h1>
+          {% placeholder "feature five" %}
+        </div>
+      </div>
+      <hr class="half-rule">
+
+      <div class="row top-margin wow fadeInUp">
+        <div class="col-lg-offset-2 col-lg-6 col-xs-9">
+          <h1 class="text-right">Supported on Microsoft Windows and Linux</h1>
+          {% placeholder "feature six" %}
+        </div>
+        <div class="col-lg-2 col-xs-3">
+          <img src="/media/computer.png" alt="" class="img-responsive wow rotateIn">
+        </div>
+      </div>
+
+      <div class="row top-margin bottom-margin">
+        <div class="col-lg-8 col-lg-offset-2 col-xs-12 text-center">
+          <a class="btn btn-primary btn-lgdark-border-btn" href="{% page_url 'getting-started' %}" role="button">Get Started</a>
+        </div>
+      </div>
+      <hr class="half-rule">
+    </div>
+
+{% endblock content %}

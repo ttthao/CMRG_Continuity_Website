@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+{% load bootstrap %}
+
+{% block title %}
+	{{ tutorial.name }}
+{% endblock title %}
+
+{% block menu-title %}
+	{{ tutorial.name }}
+{% endblock %}
+
+{% block content %}
+
+	{% if tutorial %}
+
+		<!-- display tutorial header -->
+		<header>
+			<div class="jumbotron wow fadeIn">
+		    	<div class="container top-margin bottom-margin">
+		        	<h1 class="text-center white-text">{{ tutorial.name }}</h1>
+
+		        	<div class="col-lg-offset-2 col-lg-8 text-center">
+
+						<!-- jumbotron summary -->
+						<div class="row">
+							{% if tutorial.header %}
+								<p>{{ tutorial.header }}</p>
+							{% else %}
+								<p class="text-center">No Description Available.</p>
+							{% endif %}
+						</div>
+
+					</div>
+		        </div>
+		    </div>
+		</header>
+
+	{% else %}
+
+		<!-- tutorial does not exist yet -->
+		<header>
+		<div class="jumbotron wow fadeIn">
+			<div class="container">
+				<h1>Sorry, this tutorial hasn't been written yet.</h1>
+			</div>
+		</div>
+		</header>
+	{% endif %}
+
+	{% if steps %}
+
+		<!-- exist steps for the tutorial -->
+		<div class="container-fluid">
+			<div class="row bottom-margin top-margin">
+
+				<!-- Step column -->
+				<div class="col-lg-offset-1 col-lg-8 col-xs-12">
+
+					<!-- preface -->
+					<section id="preface">
+						<div class="row bottom-margin wow fadeInUp">
+							<div class="col-lg-12 col-xs-12">
+								<h3>Preface</h3>
+								<hr>
+
+								{% if tutorial.desc %}
+									{{ tutorial.desc }}
+								{% else %}
+									<p>Good luck!</p>
+								{% endif %}
+
+							</div>
+						</div>
+					</section>
+
+					<!-- iterate through each step -->
+					{% for step in steps %}
+
+					<section id="{{step.id}}">
+						<div class="row bottom-margin wow fadeInUp">
+							<div class="col-lg-12 col-xs-12">
+								<h3>Step {{ forloop.counter }}: {{ step.name }}</h3>
+								<hr>
+
+								{% if step.youtube %}
+									<div class="embed-responsive embed-responsive-16by9 bottom-margin">
+									    <iframe class="embed-responsive-item" src="{{ step.youtube }}?start={{ step.start }}&end={{ step.end }}" frameborder="0" allowfullscreen></iframe>
+									</div>
+
+								{% endif %}
+
+								<!-- each step is frontend editable -->
+								{% render_placeholder step.step %}
+							</div>
+						</div>
+					</section>
+					{% endfor %}
+				</div>
+
+				<!-- JS navigation column -->
+					<!-- Nav -->
+					{% if steps %}
+					<nav class="col-lg-2 bs-docs-sidebar desktop-only" id="sidebar">
+							<ul class="nav nav-stacked">
+
+								<!-- preface -->
+								<li>
+									<a href="#preface" class="smoothScroll">Preface</a>
+								</li>
+
+								{% for step in steps %}
+								<li>
+									<a href="#{{step.id}}" class="smoothScroll">{{ step.name }}</a>
+								</li>
+								{% endfor %}
+
+								{% if form %}
+								<li>
+									<a href="#feedback" class="smoothScroll">Feedback</a>
+								</li>
+								{% else %}
+								{% endif %}
+
+							</ul>
+						</nav>
+					{% else %}
+						<!-- no steps available -->
+						<div class="col-lg-2 col-lg-offset-1 text-center desktop-only">Sorry, no steps yet.</div>
+					{% endif %}
+
+			</div>
+		</div>
+		<section id="feedback">
+			<div class="container-fluid">
+				<div class="row bottom-margin">
+					<div class="col-lg-8 col-lg-offset-1">
+						<h1>How Did We Do?</h1>
+						<hr>
+						<form action="#" method="post" class="form-horizontal">
+							{% csrf_token %}
+							{{ form|bootstrap_horizontal }}
+							<div class="form-group">
+								<div class="col-sm-10 col-sm-offset-2">
+									<button type="submit" class="btn btn-default btn-block">Submit</button>
+								</div>
+							</div>
+						</form>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</section>
+		{% else %}
+
+		<!-- no steps exist -->
+		<div class="container-fluid">
+			<div class="row top-margin extra-bottom-margin">
+				<div class="col-lg-8 text-center">
+					<h1 class="text-center">Stay Tuned!</h1>
+					<hr class="half-rule">
+					<p class="bottom-margin">This tutorial is currently being written right now.</p>
+
+					<!-- back button -->
+					<a href="{% url 'tutorials:index' %}" class="btn btn-primary dark-border-btn">Back To Categories</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock content %}

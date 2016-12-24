@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}
+	Theory
+{% endblock title %}
+
+{% block menu-title %}
+    Theory
+{% endblock %}
+
+{% block content %}
+
+	<header>
+		<!-- jumbotron header -->
+		<div class="jumbotron wow fadeIn">
+			<div class="container">
+				<h1 class="text-center white-text">Theory</h1>
+
+				<div class="col-lg-offset-2 col-lg-8 text-center">
+
+					<!-- jumbotron summary -->
+					<div class="row">
+						<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere inventore molestias maiores eos iusto sunt soluta laboriosam architecto? Dolorum praesentium nemo quas earum necessitatibus commodi rerum vel minima quasi suscipit?</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- content -->
+	<div class="container-fluid">
+
+		<!-- introduction -->
+		<div class="row top-margin bottom-margin wow fadeInUp">
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<h1>Learn the Theory Behind Continuity</h1>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione soluta deserunt, corporis impedit quisquam repellendus, labore temporibus doloribus expedita dolor cupiditate alias ea esse id minus laudantium dignissimos vel itaque.
+			</div>
+		</div>
+		<hr class="half-rule">
+
+		{% if categories %}
+
+			<!-- one list group for each category -->
+			{% for category in categories %}
+			<div class="row small-bottom-margin wow fadeInUp">
+				<div class="col-lg-offset-2 col-lg-8">
+				
+					<!-- title -->
+					<h1>
+						{% if category.name %}
+							{{ category.name }}
+						{% else %}
+							Category name undefined.
+						{% endif %}
+					</h1>
+
+					<!-- List group -->
+					<div class="list-group">
+
+				        <!-- iterate through each lecture in the category -->
+				        {% for lecture in category.lecture_set.all %}
+							<button type="button" class="list-group-item" data-toggle="collapse" data-target="#lecture{{ lecture.id }}">
+								<h4 class="list-group-item-heading">
+									Lecture {{ forloop.counter }}
+								</h4>
+								<p class="list-group-item-text small text-muted">
+									{% if lecture.name %}
+										{{ lecture.name }}
+									{% else %}
+										No name available.
+									{% endif %}
+								</p>
+							</button>
+
+							<!-- iterate through each attachment in the lecture -->
+							<div class="list-group nested-list-group collapse" id="lecture{{ lecture.id }}">
+
+								<!-- check if a lecture has attachments -->
+								{% if lecture.attachment_set %}
+									
+									<!-- nested list group for links -->
+									{% for attachment in lecture.attachment_set.all %}
+										<a href="{% if attachment.attachment %}{{ attachment.attachment.url }}{% endif %}" class="list-group-item">
+											{{ attachment.name }}
+										</a>
+									{% endfor %}
+								
+								<!-- no attachments for the lecture -->
+								{% else %}
+									<a href="#" class="list-group-item">No attachments</a>
+								{% endif %}
+							</div>
+						{% endfor %}
+						
+						<button type="button" class="list-group-item" data-toggle="collapse" data-target="#reading{{ forloop.counter }}">
+							<h4 class="list-group-item-heading">Suggested Readings</h4>
+						</button>
+
+						<!-- iterate through each attachment in the suggested readings -->
+						<div class="list-group nested-list-group collapse" id="reading{{ forloop.counter }}">
+
+							<!-- iterate through each suggested reading in the category -->
+							{% for reading in category.reading_set.all %}
+								
+
+									<!-- nested list group for links -->
+									<a href="{% if reading.attachment %}{{ reading.attachment.url }}{% endif %}" class="list-group-item">{{ reading.name }}</a>
+
+							{% endfor %}
+						</div>
+			    	</div>
+
+				</div>
+			</div>
+			{% endfor %}
+
+		{% else %}
+		
+			<!-- no categories available -->
+			<div class="row">
+				<div class="col-lg-12 text-center top-margin extra-bottom-margin">
+					<h3>No categories available... Stay tuned!</h3>
+				</div>
+			</div>
+
+		{% endif %}
+		<hr class="half-rule extra-bottom-margin">
+	</div>
+
+
+{% endblock content %}

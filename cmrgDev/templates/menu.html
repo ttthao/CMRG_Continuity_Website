@@ -1,0 +1,14 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags cache %}
+
+<!-- Sidebar -->
+{% if children %}
+
+	<!-- go through each child, if exists -->
+	{% for child in children %}
+		<li>
+			<a href="{{ child.get_absolute_url }}">
+				{{ child.get_menu_title }}
+			</a>
+		</li>
+	{% endfor %}
+{% endif %}

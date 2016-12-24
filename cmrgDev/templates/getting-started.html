@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}
+	{% page_attribute "page_title" %}
+{% endblock title %}
+
+{% block menu-title %}
+	{% page_attribute "page_title" %}
+{% endblock %}
+
+{% block content %}
+	<header>
+		<!-- getting started jumbotron-->
+		<div class="jumbotron wow fadeIn">
+
+			<!-- jumbotron header -->
+			<div class="container top-margin bottom-margin">
+				<h1 class="white-text text-center">Getting Started</h1>
+				<div class="col-lg-offset-2 col-lg-8 text-center">
+
+					<!-- jumbotron summary -->
+					<div class="row">
+						{% placeholder "Getting Started Summary" %}
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</header>
+	
+	<!-- content container -->
+	<div class="container-fluid">
+		<div class="row bottom-margin top-margin">
+
+			<!-- Content -->
+			<div class="col-lg-offset-1 col-lg-8 bottom-margin">
+
+				<!-- preface section -->
+				<section id="preface" class="group top-margin extra-bottom-margin wow fadeInUp">
+					<h1>Preface</h1>
+					<hr>
+					{% placeholder "preface" %}
+					
+					<!-- system requirements subsection -->
+					<div id="sysreq" class="subgroup top-margin bottom-margin">
+						<h3>System Requirements</h3>
+						<hr>
+						{% placeholder "system requirements" %}
+					</div>
+				</section>
+				
+
+
+				<!-- installation section -->
+				<section id="installation" class="group top-margin extra-bottom-margin wow fadeInUp">
+					<h1>Installation</h1>
+					<hr>
+					{% placeholder "installation" %}
+
+					<!-- continuity subgroup -->
+					<div id="continuity" class="subgroup top-margin bottom-margin">
+						<h3>Continuity</h3>
+						<hr>
+						{% placeholder "continuity" %}
+					</div>
+
+					<!-- hexblender subgroup -->
+					<div id="hexblender" class="subgroup top-margin bottom-margin">
+						<h3>HexBlender</h3>
+						<hr>
+						{% placeholder "hexblender" %}
+					</div>
+
+					<!-- versions subgroup -->
+					<div id="versions" class="subgroup top-margin bottom-margin">
+						<h3>Older Versions</h3>
+						<hr>
+						{% placeholder "older versions" %}
+					</div>
+				</section>
+				
+				<!-- Next steps group -->
+				<section id="nextsteps" class="group top-margin extra-bottom-margin wow fadeInUp">
+					<h1>Next Steps</h1>
+					<hr>
+					{% placeholder "next steps" %}
+					
+					<!-- tutorials subgroup -->
+					<div id="tutorials" class="subgroup top-margin bottom-margin">
+						<h3>Tutorials</h3>
+						<hr>
+						{% placeholder "tutorials" %}
+
+						<a href="{% page_url 'tutorial-home' %}" class="btn btn-primary dark-border-btn text-center small-top-margin">Go to Tutorials</a>
+					</div>
+
+					<!-- forum subgroup -->
+					<div id="forum" class="subgroup top-margin bottom-margin">
+						<h3>Forum</h3>
+						<hr>
+						{% placeholder "forum" %}
+
+						<a href="#" class="btn btn-primary dark-border-btn text-center small-top-margin bottom-margin">Go to Forum</a>
+						<hr>
+					</div>
+				</section>
+			</div>
+
+			<!-- right side navigation -->
+			<nav class="col-lg-2 bs-docs-sidebar desktop-only" id="sidebar">
+
+			  <ul class="nav nav-stacked">
+			    <li>
+			      <a href="#preface" class="smoothScroll">Preface</a>
+			      <ul class="nav nav-stacked">
+			        <li><a href="#sysreq" class="smoothScroll">System Requirements</a></li>
+			      </ul>
+			    </li>
+			    <li>
+			      <a href="#installation" class="smoothScroll">Installation</a>
+			      <ul class="nav nav-stacked">
+			        <li><a href="#continuity" class="smoothScroll">Continuity</a></li>
+			        <li><a href="#hexblender" class="smoothScroll">Hexblender</a></li>
+			        <li><a href="#versions" class="smoothScroll">Older Versions</a></li>
+			      </ul>
+			    </li>
+			    <li>
+			      <a href="#nextsteps" class="smoothScroll">Next Steps</a>
+			      <ul class="nav nav-stacked">
+			        <li><a href="#tutorials" class="smoothScroll">Tutorials</a></li>
+			        <li><a href="#forum" class="smoothScroll">Forum</a></li>
+			      </ul>
+			    </li>
+			  </ul>
+			</nav>
+
+		</div>
+	</div>
+
+{% endblock content %}

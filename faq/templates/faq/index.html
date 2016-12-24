@@ -1,0 +1,37 @@
+{% if categories %}
+
+	<!-- iterate through each category -->
+	{% for category in categories %}
+		<div class="row category wow fadeInUp">
+			
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>{{ category }}</h1>
+				<div class="list-group">
+
+					<!-- iterate through each question in the category -->
+					{% for question in category.question_set.all reversed %}
+					<button class="list-group-item full-width text-left" 
+					data-toggle="collapse" 
+					data-target="#{{category}}-{{ forloop.counter }}">
+						{{ question.question_text }}
+					</button>
+
+						<!-- nested list group for links -->
+						<ul class="list-group nested-list-group collapse" id="{{ category }}-{{ forloop.counter }}">
+							<li class="list-group-item inner-child">
+								{{ question.answer_text }}
+							</li>
+						</ul>
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+{% else %}
+	<!-- no questions available -->
+	<div class="row">
+		<div class="col-lg-12 text-center">Sorry, no questions yet.</div>
+	</div>
+{% endif %}

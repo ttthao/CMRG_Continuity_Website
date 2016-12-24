@@ -1,0 +1,13 @@
+static/admin
+static/cms
+static/cmsplugin_filer_folder
+static/djangocms_admin_style
+static/djangocms_text_ckeditor
+static/filer
+static/preview_images
+static/sortedm2m
+static/treebeard
+*.pyc
+*.swp
+*.DS_Store
+u

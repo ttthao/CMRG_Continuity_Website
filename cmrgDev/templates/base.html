@@ -1,0 +1,122 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<!-- metadata -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+		<!--Bootstrap, template, djangoCMS CSS files, misc. stylesheets -->
+		<link rel="stylesheet" href="{% static 'style/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'style/simple-sidebar.css' %}">
+		<link rel="stylesheet" href="{% static 'style/style.css' %}">
+		<link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		{% render_block "css" %}
+
+		<!-- default title -->
+		<title>{% block title %}CMRG{% endblock title %}</title>
+
+		<!-- animation libraries -->
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<script>
+			new WOW().init();
+		</script>
+
+	</head>
+	<body class="disable">
+		{% cms_toolbar %}
+
+		<!-- primary #wrapper -->
+		<div id="wrapper">
+
+			<!-- mobile indicator -->
+			<div id="mobile-indicator"></div>
+
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+
+				<!-- list of links -->
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a href="{% page_url "home" %}">Continuity
+						</a>
+					</li>
+
+					<!-- dynamic menu -->
+					{% show_menu 0 0 0 0 %}
+
+				</ul>
+			</div>
+
+			<!-- content must be in #page-content-wrapper -->
+			<div id="page-content-wrapper" class="no-padding">
+				<section id="up"></section>
+
+				<!-- menu button -->
+				<div class="menu-icon-wrapper">
+					<span class="glyphicon glyphicon-th-list menu-button" aria-hidden="true" id="menu-toggle"></span>
+					<h4 class="menu-nav-header disable">{% block menu-title %}Continuity {% endblock %}</h4>
+				</div>
+				
+
+				<!-- Page Content -->
+				{% block content %} {% endblock content %}
+
+				<!-- footer -->
+				<footer>
+					<div class="container-fluid light-blue">
+
+						<!-- copyright -->
+						<div class="row xs-small-top-padding xs-small-bottom-padding text-center">
+							<div class="col-lg-1 col-xs-3 col-sm-3 col-lg-offset-4">
+								<a href="{% page_url 'home' %}"><img src="/media/home.png" class="img-responsive bottom-icon"></a>
+							</div>
+							<div class="col-lg-1 col-xs-3 col-sm-3">
+								<a href="http://cmrg.ucsd.edu"><img src="/media/cmrg.png" class="img-responsive bottom-icon"></a>
+							</div>
+							<div class="col-lg-1 col-xs-3 col-sm-3">
+								<a href="mailto:someone@yoursite.com"><img src="/media/mail.png" class="img-responsive bottom-icon"></a>
+							</div>
+							<div class="col-lg-1 col-xs-3 col-sm-3">
+								<a href="#up" class="smoothScroll"><img src="/media/up.png" class="img-responsive bottom-icon"></a>
+							</div>
+						</div>
+
+						<!-- footer content -->
+						<div class="row dark-blue top-padding bottom-padding white-text">
+							<div class="col-lg-6 col-lg-offset-3">
+
+								{% static_placeholder 'footer' %}
+							</div>
+						</div>
+					</div>
+				</footer>
+
+			</div> <!-- page-content-wrapper -->
+		</div> <!-- wrapper -->
+
+		<!-- JQuery, Bootstrap JS, djangoCMS JS, menu JS, analytics -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		{% render_block "js" %}
+		<script src="{% static 'js/menu.js' %}"></script>
+		<script src="{% static 'js/scroll-highlight.js' %}"></script>
+		<script src="{% static 'js/affix.js' %}"></script>
+		<script src="{% static 'js/smooth-scroll.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-80574736-1', 'auto');
+			ga('send', 'pageview');
+
+		</script>
+
+	</body>
+</html>

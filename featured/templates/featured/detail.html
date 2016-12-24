@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}
+    {{ story.header }}
+{% endblock title %}
+
+{% block menu-title %}
+    {{ story.header }}
+{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="jumbotron wow fadeIn img-jumbotron" style='background: #000 url("{{ story.image.url }}") center center;'>
+        	<div class="container">
+
+            	<h1 class="text-center white-text">{{ story.header }}</h1>
+            	<div class="col-lg-offset-2 col-lg-8 text-center">
+
+    				<!-- jumbotron summary -->
+    				<div class="row">
+    					{{ story.snippet }}
+    				</div>
+
+    			</div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 top-margin bottom-margin">
+                {% render_placeholder story.details %}
+            </div>
+        </div>
+        <hr class="half-rule">
+            <div class="row text-center top-margin bottom-margin">
+                <a href="{% url 'featured:index' %}" class="btn btn-default dark-border-btn">Back To Featured</a>
+            </div>
+        
+
+    </div>
+
+{% endblock %}

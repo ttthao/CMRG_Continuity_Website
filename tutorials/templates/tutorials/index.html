@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}
+	Tutorials
+{% endblock title %}
+
+{% block menu-title %}
+    Tutorials
+{% endblock %}
+
+{% block content %}
+	<header>
+	    <div class="jumbotron wow fadeIn">
+	    	<div class="container">
+	        	<h1 class="text-center white-text">Tutorials</h1>
+	        	<div class="col-lg-offset-2 col-lg-8 text-center">
+
+					<!-- jumbotron summary -->
+					<div class="row">
+						<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente ipsa, dignissimos necessitatibus in reprehenderit culpa harum commodi consectetur cumque consequatur magnam ullam eum veniam tenetur vitae numquam. Eligendi eius, aspernatur.</p>
+					</div>
+
+				</div>
+	        </div>
+	    </div>
+	</header>
+
+    <div class="container">
+
+    	<!-- introduction -->
+        <div class="row top-margin bottom-margin wow fadeInUp">
+        	<div class="col-lg-8 col-lg-offset-2 text-center">
+        		<h1>Learn Continuity</h1>
+        		<p>
+        			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error aliquam facere aliquid atque accusamus nostrum mollitia beatae quasi vel dolorem, autem nisi! Eius facere magni culpa commodi voluptatem, ducimus dolorum.
+        		</p>
+        	</div>
+        </div>
+        <hr class="half-rule">
+
+		{% if categories %}
+			
+			<!-- display categories -->
+			{% for category in categories %}
+
+				{% if forloop.counter0|divisibleby:3 %}
+
+					<!-- start a new row before every third category -->
+					<div class="row top-margin bottom-margin wow fadeInUp">
+				{% endif %}
+
+				<!-- iterate through each category -->
+			    <div class="col-lg-4 col-sm-4 text-center bottom-margin">
+
+			    	<!-- display icon, if exists -->
+		    		<a href="{% url 'tutorials:category' category.id %}">
+
+		    			{% if category.icon %}
+		    				<img src="{{ category.icon.url }}" alt="{{ category.name }}" class="img-responsive category-img animated infinite">
+
+		    			{% else %}
+							<img src="/media/tutorials/default.png" alt="{{ category.name }}" class="img-responsive category-img animated infinite">
+		    			{% endif %}
+		    		</a>
+					
+					<!-- display menu title -->
+			        <h3>{{ category.name }}</h3>
+
+			        <!-- display page description, if exists -->
+			        {% if category.desc %}
+			        	<p>{{ category.desc }}</p>
+
+			        {% else %}
+			        	<p>Sorry, no description yet.</p>
+
+			        {% endif %}
+
+			        <!-- button to go to specific category 
+			        <a href="{% url 'tutorials:category' category.id %}" class="btn btn-default">Get Started</a>
+			        -->
+			    </div>
+				
+				{% if forloop.counter0|add:"1"|divisibleby:3 or forloop.last %}
+			    	<!-- close the row if three columns are in it or if it is the last column -->
+			    	</div>
+			    {% endif %}
+
+			{% endfor %}
+
+		{% else %}
+
+			<!-- no categories available -->
+			<div class="col-lg-4 col-lg-offset-4 text-center bottom-margin">Sorry, no categories yet...</div>
+		{% endif %}
+    </div>
+{% endblock content %}

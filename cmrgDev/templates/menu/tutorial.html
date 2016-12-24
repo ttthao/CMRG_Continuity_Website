@@ -1,0 +1,29 @@
+{% load i18n menu_tags cache %}
+
+<!-- tutorials within one category -->
+<div class="panel panel-default bottom-margin">
+	<div class="panel-heading text-center">
+		<h4>Tutorials</h4>
+	</div>
+
+	<!-- individual tutorials -->
+	<div class="list-group">
+		
+		{% if children %}
+			<!-- tutorials exist for this category -->
+			{% for child in children %}
+				<a href="{{ child.get_absolute_url }}" 
+				class="list-group-item text-center{% if child.selected %}active{% endif %}">
+					{{ child.get_menu_title }}
+				</a>
+			{% endfor %}
+
+		{% else %}
+			<!-- tutorials do not exist for this category -->
+			<button type="button" class="list-group-item text-center">Stay tuned!</button>
+		{% endif %}
+	</div>
+	
+</div>
+
+

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+{% block title %}
+	{{ category.name }}
+{% endblock title %}
+
+{% block menu-title %}
+    {{ category.name }}
+{% endblock %}
+
+{% block content %}
+	
+	<!-- title -->
+	<header>
+	    <div class="jumbotron wow fadeIn">
+	    	<div class="container">
+	        	<h1 class="text-center white-text">{{ category.name }}</h1>
+
+	        	<div class="col-lg-offset-2 col-lg-8 text-center">
+
+					<!-- jumbotron summary -->
+					<div class="row">
+						{% if category.desc %}
+							<p>{{ category.desc }}</p>
+						{% else %}
+							<p>Sorry, no description available.</p>
+						{% endif %}
+					</div>
+
+				</div>
+
+	        </div>
+	    </div>
+	</header>
+
+    <!-- content -->
+    <div class="container">
+		
+		<div class="row wow top-margin bottom-margin fadeInUp">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h1>Preface</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, consectetur impedit dolor asperiores facere expedita quae, fugiat! Repudiandae, odio beatae sit velit aspernatur asperiores perferendis! Fugit voluptas sequi tenetur unde?
+				</p>
+			</div>
+			<hr class="half-rule">
+		</div>
+		<!-- list of available tutorials -->
+		<div class="row wow top-margin bottom-margin fadeInUp">
+    		<div class="col-lg-8 col-lg-offset-2">
+
+				<h1>Tutorials</h1>
+
+				<!-- individual tutorials -->
+				<div class="list-group">
+					
+					{% if tutorials %}
+						<!-- tutorials exist for this category -->
+						{% for tutorial in tutorials %}
+							<a href="{% url 'tutorials:tutorial' tutorial.id %}" 
+							class="list-group-item">
+								{{ tutorial.name }}
+							</a>
+						{% endfor %}
+
+					{% else %}
+						<!-- tutorials do not exist for this category -->
+						<button type="button" class="list-group-item">Stay tuned!</button>
+					{% endif %}
+
+					<!-- back button -->
+					<a href="{% url 'tutorials:index' %}" class="list-group-item">Back To Categories</a>
+				</div>
+
+			</div>
+		</div>
+		<hr class="half-rule bottom-margin">
+    </div>
+{% endblock content %}

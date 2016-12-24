@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}
+    Featured
+{% endblock title %}
+
+{% block menu-title %}
+    Featured
+{% endblock %}
+
+{% block content %}
+    <header>
+        <div class="jumbotron wow fadeIn">
+        	<div class="container">
+            	<h1 class="text-center white-text">Featured</h1>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- content -->
+    <div class="container-fluid">
+
+        {% for story in stories %}
+            <div class="row bottom-margin{% if forloop.first %} top-margin{% endif %}">
+                <div class="col-lg-8 col-lg-offset-2">
+                    
+                    <h1>{{ story.header }}</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <a href="{% url 'featured:story' story.id %}"><img src="{{ story.image.url }}" alt="" class="img-responsive"></a>
+                        </div>
+
+                        <div class="list-group">
+                            <button type="button" class="list-group-item">{{ story.snippet }}</button>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>  {{ story.date }}
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+
+            </div>
+            
+        {% endfor %}
+
+
+        <nav class="text-center">
+            <ul class="pagination">
+
+                <!-- previous button -->
+                <li {% if not stories.has_previous %}class="disabled"{% endif %}>
+                    <a href="
+                        {% if stories.has_previous %}
+                            ?page={{ stories.previous_page_number }}
+                        {% else %}
+                            #
+                        {% endif %}" 
+                        aria-label="Previous">
+                            
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <!-- page numbers -->
+                {% for page in page_range %}
+                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+
+                <!-- next button -->
+               <li {% if not stories.has_next %}class="disabled"{% endif %}>
+                    <a href="
+                        {% if stories.has_next %}
+                            ?page={{ stories.next_page_number }}
+                        {% else %}
+                            #
+                        {% endif %}" 
+                        aria-label="Next">
+                            
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+
+
+
+
+    </div>
+{% endblock content %}

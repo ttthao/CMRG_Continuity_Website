@@ -1,0 +1,23 @@
+{% load i18n menu_tags cache %}
+
+<!-- right side navigation -->
+<div class="list-group">
+	
+	<!-- steps are present -->
+	{% if children %}
+
+		<!-- loop through each step -->
+		{% for child in children %}
+			<a href="{{ child.get_absolute_url }}" 
+			class="list-group-item {% if child.selected %}active{% endif %}">
+				{{ child.get_menu_title }}
+			</a>
+		{% endfor %}
+	
+	<!-- no steps yet -->
+	{% else %}
+		<button type="button" class="list-group-item">
+			Stay Tuned!
+		</button>
+	{% endif %}
+</div>
